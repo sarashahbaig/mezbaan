@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, make_response, abort
-from app import app, db
+from app import app, db, bcrypt
 from app.models import User
 
 
@@ -21,7 +21,9 @@ def register():
   if username is None or email is None or password is None:
       return make_response("One of the fields is missing", 400)
 
-  user = User(username=username, email=email, password_hash=password)
+  pwd_hash = bcrypt.generate_password_hash(password)
+
+  user = User(username=username, email=email, password_hash=pwd_hash)
   db.session.add(user)
   db.session.commit()
 
@@ -41,9 +43,13 @@ def login():
   if user is None:
     return make_response("No user found", 404)
 
-  return jsonify(user.username)
+  user_pwd = user.password_hash
+
+  if not bcrypt.check_password_hash(user_pwd, password):
+    return make_response("Username or passowrd incorrect", 401)
+
+  return jsonify(user.serialize)
 
 @app.route("/api/logout", methods=["GET"])
 def logout():
-  
-  return "You are now logged out"
+  return make_response("You are now logged out", 200)
