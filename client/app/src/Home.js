@@ -1,22 +1,22 @@
 import React from "react";
 import axios from "axios";
-import "./App.css";
 
-class App extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       users: []
     };
   }
-
   componentDidMount() {
     axios
       .get("http://127.0.0.1:5000/api/users")
       .then(res => res.data)
       .then(data => {
-        console.log(data);
-        this.setState({ users: data });
+        const { users } = data;
+        console.log(users);
+        this.setState({ users: users });
+        console.log(this.state);
       })
       .catch(error => {
         console.log(error);
@@ -25,7 +25,7 @@ class App extends React.Component {
 
   handleLogin = () => {
     axios
-      .get("http://127.0.0.1:5000/api/login")
+      .get("http://127.0.0.1:5000/login")
       .then(res => res.data)
       .then(data => {
         console.log(data);
@@ -37,7 +37,7 @@ class App extends React.Component {
 
   handleLogout = () => {
     axios
-      .get("http://127.0.0.1:5000/api/logout")
+      .get("http://127.0.0.1:5000/logout")
       .then(res => res.data)
       .then(data => {
         console.log(data);
@@ -49,19 +49,13 @@ class App extends React.Component {
 
   render() {
     const { users } = this.state;
+
     return (
       <div>
-        <h1>Mezbaan</h1>
-        {users.map((user, index) => (
-          <h3 key={index}>
-            {user.username} - {user.email}
-          </h3>
-        ))}
-        <button onClick={this.handleLogin}>Login</button>
-        <button onClick={this.handleLogout}>Logout</button>
+        <h1 class="row justify-content-center  text-muted mt-3">Meezban</h1>
       </div>
     );
   }
 }
 
-export default App;
+export default Home;
