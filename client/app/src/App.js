@@ -57,8 +57,12 @@ class App extends React.Component {
             {user.username} - {user.email}
           </h3>
         ))}
-        <button onClick={this.handleLogin}>Login</button>
-        <button onClick={this.handleLogout}>Logout</button>
+        <button className="btn btn-primary" onClick={this.handleLogin}>
+          Login
+        </button>
+        <button className="btn btn-info" onClick={this.handleLogout}>
+          Logout
+        </button>
       </div>
     );
   }

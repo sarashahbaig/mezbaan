@@ -52,7 +52,7 @@ class Home extends React.Component {
 
     return (
       <div>
-        <h1 class="row justify-content-center  text-muted mt-3">Meezban</h1>
+        <h1 className="row justify-content-center  text-muted mt-3">Meezban</h1>
       </div>
     );
   }
