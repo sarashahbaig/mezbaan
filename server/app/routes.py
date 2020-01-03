@@ -5,10 +5,7 @@ from app.models import User
 
 @app.route("/", methods=["GET"])
 def index():
-  name =  request.args.get('username')
-  user = User.query.all()[0]
-  # return jsonify(users, 200)
-  return make_response(user.username)
+  return make_response("home", 200)
 
 
 @app.route("/api/register", methods=["POST"])
@@ -53,3 +50,12 @@ def login():
 @app.route("/api/logout", methods=["GET"])
 def logout():
   return make_response("You are now logged out", 200)
+
+@app.route("/api/users", methods=["GET"])
+def get_all_users():
+  db_users = User.query.all()
+  users = []
+  for user in db_users:
+    users.append(user.serialize)
+  return jsonify(users)
+  # i.serialize for i in qryresult.all()]
