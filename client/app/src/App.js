@@ -3,7 +3,7 @@ import axios from "axios";
 import { Redirect, Route, Switch, withRouter } from "react-router";
 import "./App.css";
 import Header from "./components/Header";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -86,9 +86,7 @@ class App extends React.Component {
           handleLogout={this.handleLogout}
           authenticated={authenticated}
         />
-        <h1 className="row justify-content-center  text-muted mt-3">
-          Welcome to Meezban
-        </h1>
+
         <Switch>
           <Route exact path="/">
             <Home users={users} />
