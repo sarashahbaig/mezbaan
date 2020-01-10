@@ -14,13 +14,14 @@ def register():
   username = request.json.get('username')
   email = request.json.get('email')
   password = request.json.get('password')
+  hours = request.json.get('hours')
 
   if username is None or email is None or password is None:
       return make_response("One of the fields is missing", 400)
 
   pwd_hash = bcrypt.generate_password_hash(password)
 
-  user = User(username=username, email=email, password_hash=pwd_hash)
+  user = User(username=username, email=email, password_hash=pwd_hash, hours=hours)
   db.session.add(user)
   db.session.commit()
 
@@ -59,3 +60,7 @@ def get_all_users():
     users.append(user.serialize)
   return jsonify(users)
   # i.serialize for i in qryresult.all()]
+
+  @app.route("/api/afterlogin", methods=["GET"])
+  def afterlogin():
+    return "hello"
