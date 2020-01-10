@@ -15,13 +15,16 @@ def register():
   email = request.json.get('email')
   password = request.json.get('password')
   hours = request.json.get('hours')
+  days_can_volunteer = request.json.get('days_can_volunteer')
+  time_can_volunteer = request.json.get('time_can_volunteer')
+  languages = request.json.get('languages')
 
   if username is None or email is None or password is None:
       return make_response("One of the fields is missing", 400)
 
   pwd_hash = bcrypt.generate_password_hash(password)
 
-  user = User(username=username, email=email, password_hash=pwd_hash, hours=hours)
+  user = User(username=username, email=email, password_hash=pwd_hash, hours=hours, days_can_volunteer=days_can_volunteer, time_can_volunteer=time_can_volunteer, languages=languages)
   db.session.add(user)
   db.session.commit()
 
