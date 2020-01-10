@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mezbaan/static/css/main.bdc6506f.chunk.css",
+    "main.js": "/mezbaan/static/js/main.51eb4f02.chunk.js",
+    "main.js.map": "/mezbaan/static/js/main.51eb4f02.chunk.js.map",
+    "runtime-main.js": "/mezbaan/static/js/runtime-main.c8deaa77.js",
+    "runtime-main.js.map": "/mezbaan/static/js/runtime-main.c8deaa77.js.map",
+    "static/js/2.c2a702ec.chunk.js": "/mezbaan/static/js/2.c2a702ec.chunk.js",
+    "static/js/2.c2a702ec.chunk.js.map": "/mezbaan/static/js/2.c2a702ec.chunk.js.map",
+    "index.html": "/mezbaan/index.html",
+    "precache-manifest.f81b67621dfd854b08cf32d1bc695d9b.js": "/mezbaan/precache-manifest.f81b67621dfd854b08cf32d1bc695d9b.js",
+    "service-worker.js": "/mezbaan/service-worker.js",
+    "static/css/main.bdc6506f.chunk.css.map": "/mezbaan/static/css/main.bdc6506f.chunk.css.map",
+    "static/js/2.c2a702ec.chunk.js.LICENSE": "/mezbaan/static/js/2.c2a702ec.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8deaa77.js",
+    "static/js/2.c2a702ec.chunk.js",
+    "static/css/main.bdc6506f.chunk.css",
+    "static/js/main.51eb4f02.chunk.js"
+  ]
+}
