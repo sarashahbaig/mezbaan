@@ -9,6 +9,8 @@ class Register extends React.Component {
       email: "",
       password: "",
       hours: ""
+      //   time:"",
+      //   Day:""
     };
   }
 
@@ -28,94 +30,100 @@ class Register extends React.Component {
 
   handleRegisterSubmit = event => {
     event.preventDefault();
-    const { username, email, password } = this.state;
-    this.props.handleSignUp({ username, email, password });
+    const { username, email, password, hours } = this.state;
+    this.props.handleSignUp({ username, email, password, hours });
   };
 
   render() {
     const { isVolunteer, username, password, email, hours } = this.state;
     return (
       <div className="container">
-        <h1>Register</h1>
+        <div className="container p-3 my-3 border">
+          <h1>Register</h1>
+          <hr></hr>
 
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
-            value="volunteer"
-            onChange={this.handleUserType}
-          />
-          <label className="form-check-label" for="inlineRadio1">
-            Volunteer
-          </label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
-            value="user"
-            onChange={this.handleUserType}
-          />
-          <label className="form-check-label" for="inlineRadio2">
-            User
-          </label>
-        </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              value="volunteer"
+              onChange={this.handleUserType}
+            />
+            <label className="form-check-label" for="inlineRadio1">
+              Volunteer
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              value="user"
+              onChange={this.handleUserType}
+            />
+            <label className="form-check-label" for="inlineRadio2">
+              User
+            </label>
+          </div>
+          <hr></hr>
 
-        <form onSubmit={this.handleRegisterSubmit}>
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input
-              className="form-control"
-              id="username"
-              type="text"
-              name="username"
-              value={username}
-              onChange={this.handleInput}
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              className="form-control"
-              id="email"
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleInput}
-            />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              className="form-control"
-              id="password"
-              type="text"
-              name="password"
-              value={password}
-              onChange={this.handleInput}
-            />
-          </div>
-          {isVolunteer && (
+          <form onSubmit={this.handleRegisterSubmit}>
             <div class="form-group">
-              <label for="hours">Hours</label>
+              <label for="username">Username</label>
               <input
                 className="form-control"
-                id="hours"
+                id="username"
                 type="text"
-                name="hours"
-                value={hours}
+                name="username"
+                value={username}
                 onChange={this.handleInput}
               />
             </div>
-          )}
-          <button className="btn btn-primary" type="submit">
-            Register
-          </button>
-        </form>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                className="form-control"
+                id="email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={this.handleInput}
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                className="form-control"
+                id="password"
+                type="text"
+                name="password"
+                value={password}
+                onChange={this.handleInput}
+              />
+            </div>
+
+            {isVolunteer && (
+              <div class="form-group">
+                <label for="hours">Hours</label>
+                <input
+                  className="form-control"
+                  id="hours"
+                  type="text"
+                  name="hours"
+                  value={hours}
+                  onChange={this.handleInput}
+                />
+              </div>
+            )}
+
+            <button className="btn btn-secondary" type="submit">
+              Register
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

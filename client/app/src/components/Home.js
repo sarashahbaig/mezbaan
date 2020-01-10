@@ -4,24 +4,42 @@ import axios from "axios";
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.state = {
+      id: "",
+      usersname: "",
+      email: "",
+      error: ""
+    };
   }
 
   render() {
-    const { users } = this.props;
+    const { id, username, email } = this.props;
 
     return (
-      <main>
-        <h1 className="row justify-content-center  text-muted mt-3">
-          Meezban this is a home page
-        </h1>
-        <h1>Mezbaan this is the app page</h1>
-        {users.map((user, index) => (
-          <h3 key={index}>
-            {user.username} - {user.email}
-          </h3>
-        ))}
-      </main>
+      <div className="container p-3 my-3 border">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Volunteer</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Photo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* {users.map((user, index) => (
+                const {id, username, email} = users;
+                <tr key={index}>
+                  <td>{username}</td>
+                  <td>{email}</td>
+                  <td>{id}</td>
+                </tr>
+              );
+              ])} */}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

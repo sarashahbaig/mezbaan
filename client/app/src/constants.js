@@ -2,7 +2,8 @@ export const API_ROUTES = {
   main: "http://127.0.0.1:5000/api",
   users: "/users",
   register: "/register",
-  login: "/login"
+  login: "/login",
+  afterlogin: "/afterlogin"
 };
 export const MENU_ITEMS = [
   { name: "Login", link: "/login" },

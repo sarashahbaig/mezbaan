@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Afterlogin from "./components/Afterlogin";
 import { API_ROUTES } from "./constants";
 class App extends React.Component {
   constructor(props) {
@@ -85,6 +86,9 @@ class App extends React.Component {
           handleLogout={this.handleLogout}
           authenticated={authenticated}
         />
+        <h1 className="row justify-content-center  text-muted mt-3">
+          Welcome to Meezban
+        </h1>
         <Switch>
           <Route exact path="/">
             <Home users={users} />
@@ -94,6 +98,9 @@ class App extends React.Component {
           </Route>
           <Route path="/login">
             <Login handleLogin={this.handleLogin} />
+          </Route>
+          <Route path="/afterlogin">
+            <Afterlogin />
           </Route>
         </Switch>
 
