@@ -19,15 +19,13 @@ class Header extends React.Component {
     const { authenticated } = this.props;
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark d-flex mb-3">
         <Link className="navbar-brand" to={`${HOME.link}`}>
           {HOME.name}
         </Link>
 
         <ul className="navbar-nav justify-content-right ml-auto">
-          <Link className="navbar-brand" >
-
-          </Link>
+          <Link className="navbar-brand"></Link>
 
           {authenticated ? (
             <li className="nav-item">
