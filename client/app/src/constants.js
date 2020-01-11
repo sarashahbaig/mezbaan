@@ -3,12 +3,13 @@ export const API_ROUTES = {
   users: "/users",
   register: "/register",
   login: "/login",
-  afterlogin: "/afterlogin"
+  afterlogin: "/afterlogin",
+  languages: "/languages"
 };
 export const MENU_ITEMS = [
   { name: "Login", link: "/login" },
   { name: "Register", link: "/register" },
-  { name: "Mission", link: "/mission" },
+  { name: "Mission", link: "/mission" }
   // { name: "Join Us", link: "/register" }
 ];
 

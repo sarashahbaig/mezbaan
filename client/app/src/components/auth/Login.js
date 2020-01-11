@@ -1,5 +1,5 @@
 import React from "react";
-import AuthCard from "./common/AuthCard";
+import AuthCard from "../common/AuthCard";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,6 @@ class Login extends React.Component {
     const { username, password } = this.state;
     return (
       <AuthCard title="Login">
-        <div className="dropdown-divider" />
         <form onSubmit={this.handleLoginSubmit}>
           <div class="form-group">
             <label for="username">Username</label>
@@ -44,15 +43,17 @@ class Login extends React.Component {
             <input
               className="form-control"
               id="password"
-              type="text"
+              type="password"
               name="password"
               value={password}
               onChange={this.handleInput}
             />
           </div>
-          <button className="btn btn-secondary" type="submit">
-            Login
-          </button>
+          <div className="d-flex justify-content-center">
+            <button className="btn btn-primary flex-grow-1" type="submit">
+              Login
+            </button>
+          </div>
         </form>
       </AuthCard>
     );

@@ -10,23 +10,23 @@ class Footer extends React.Component {
   render() {
     return (
       <footer className="container-fluid bg-dark text-white p-4">
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
             <h6>About</h6>
             <h6>Contant</h6>
           </div>
-          <div class="col">
+          <div className="col">
             <h6>Terms of Use</h6>
             <h6>FAQ</h6>
           </div>
 
-          <div class="col">
+          <div className="col">
             <h6>Blogs</h6>
             <h6>Help</h6>
           </div>
         </div>
-        <div class="row">
-          <div class="col text-center">Copyright @Mezbaan 2020</div>
+        <div className="row">
+          <div className="col text-center">Copyright @Mezbaan 2020</div>
         </div>
       </footer>
     );

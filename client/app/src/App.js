@@ -5,8 +5,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/home/Home";
 import Footer from "./components/Footer";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
 import Afterlogin from "./components/Afterlogin";
 import Mission from "./components/Mission";
 import Services from "./components/Services";
@@ -60,14 +60,10 @@ class App extends React.Component {
     this.props.history.push("/");
   };
 
-  handleSignUp = userdata => {
-    const { username, email, password } = userdata;
+  handleSignUp = userData => {
+    console.log(userData);
     axios
-      .post(API_ROUTES.main + API_ROUTES.register, {
-        username: username,
-        email: email,
-        password: password
-      })
+      .post(API_ROUTES.main + API_ROUTES.register, userData)
       .then(res => {
         console.log(res);
         this.setState({ authenticated: true });
