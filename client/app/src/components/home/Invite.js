@@ -10,7 +10,7 @@ class Invite extends React.Component {
             <Card background="bg-warning">Sign Up as Volunteer</Card>
           </div>
           <div className="col">
-            <Card background="bg-success">Sign Up as Immigrant</Card>
+            <Card background="bg-success" button >Sign Up as Immigrant</Card>
           </div>
         </div>
       </section>

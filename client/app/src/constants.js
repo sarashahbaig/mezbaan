@@ -7,10 +7,17 @@ export const API_ROUTES = {
 };
 export const MENU_ITEMS = [
   { name: "Login", link: "/login" },
-  { name: "Register", link: "/register" }
+  { name: "Register", link: "/register" },
+  { name: "Mission", link: "/mission" },
+  // { name: "Join Us", link: "/register" }
 ];
 
 export const HOME = {
   name: "Mezbaan",
   link: "/"
 };
+
+export const MISSION = [
+  { name: "Mission", link: "/mission" },
+  { name: "Join Us", link: "/register" }
+];

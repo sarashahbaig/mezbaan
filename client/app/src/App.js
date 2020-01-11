@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Afterlogin from "./components/Afterlogin";
+import Mission from "./components/Mission";
+import Services from "./components/Services";
 import { API_ROUTES } from "./constants";
 class App extends React.Component {
   constructor(props) {
@@ -97,8 +99,14 @@ class App extends React.Component {
           <Route path="/login">
             <Login handleLogin={this.handleLogin} />
           </Route>
+          <Route path="/mission">
+            <Mission />
+          </Route>
           <Route path="/afterlogin">
             <Afterlogin />
+          </Route>
+          <Route path="/services">
+            <Services />
           </Route>
         </Switch>
 
