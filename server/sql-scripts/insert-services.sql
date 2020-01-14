@@ -1,0 +1,10 @@
+INSERT INTO `service`(`service`) VALUES ('Buying a Car');
+INSERT INTO `service`(`service`) VALUES ('With Legal matters');
+INSERT INTO `service`(`service`) VALUES ('Filling out Form');
+INSERT INTO `service`(`service`) VALUES ('Finding a Job');
+INSERT INTO `service`(`service`) VALUES ('Finding Hospital');
+INSERT INTO `service`(`service`) VALUES ('Finding Food');
+INSERT INTO `service`(`service`) VALUES ('Finding a house/Apartment');
+INSERT INTO `service`(`service`) VALUES ('Finding a School');
+INSERT INTO `service`(`service`) VALUES ('Learning to Drive');
+INSERT INTO `service`(`service`) VALUES ('Learning English');
