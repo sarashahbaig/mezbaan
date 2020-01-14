@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, make_response, abort
 from app import app, db, bcrypt
-from app.models import User, Language
+from app.models import User, Language, Service
 
 
 @app.route("/", methods=["GET"])
@@ -21,7 +21,8 @@ def register():
   state = request.json.get('state')
   zip_code = request.json.get('zipCode')
   languages = request.json.get('languages')
-  tasks = request.json.get('tasks')
+  services = request.json.get('services')
+  print(services)
   days_can_volunteer = request.json.get('days')
   time_can_volunteer = request.json.get('time_can_volunteer')
   description = request.json.get('description')
@@ -41,6 +42,14 @@ def register():
     user_languages.append(language)
   
 
+  user_services = []
+  for serv_id in services:
+    service = Service.query.filter_by(id=serv_id).first()
+    user_services.append(service)
+  
+  print(user_languages)
+  print(user_services)
+
   user_data = {
     "username": username,
     "password_hash": pwd_hash,
@@ -53,7 +62,7 @@ def register():
     "languages": user_languages,
     "description": description,
     "is_volunteer": is_volunteer,
-    "tasks": tasks,
+    "services": user_services,
     "days_can_volunteer": days_can_volunteer,
     "time_can_volunteer": time_can_volunteer,
   }
@@ -92,11 +101,10 @@ def logout():
 @app.route("/api/users", methods=["GET"])
 def get_all_users():
   db_users = User.query.all()
-  users = []
-  for user in db_users:
-    users.append(user.serialize)
+  users = [user.to_json() for user in User.query]
+  
   return jsonify(users)
-  # i.serialize for i in qryresult.all()]
+  
 
 @app.route("/api/afterlogin", methods=["GET"])
 def afterlogin():
@@ -105,7 +113,14 @@ def afterlogin():
 
 @app.route('/api/languages', methods=['GET'])
 def get_languages():
-  # languages = Language.query.all()
+ 
   languages = [lang.to_json() for lang in Language.query]
   return jsonify(languages)
+
+
+
+@app.route('/api/services', methods=['GET'])
+def get_services():
+  services = [serv.to_json() for serv in Service.query]
+  return jsonify(services)
 
