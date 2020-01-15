@@ -1,3 +1,4 @@
-TestUserA,testpassword,testuserA@email.com,first,last,Seattle,WA,95,3 4,Readng,False,1 5,Mon,2
-TestUserB,testpassword,testuserB@email.com,first,last,Seattle,WA,95,1 4,Readng,False,1 4,Mon,2
-TestUserC,testpassword,testuserC@email.com,first,last,Seattle,WA,95,1 2,Readng,False,1 3,Mon,2
+TestUserA,testpassword,testuserA@email.com,first,last,Seattle,WA,95,3 4,Seattle Native,true,1 5,Mon,2
+TestUserB,testpassword,testuserB@email.com,first,last,Seattle,WA,95,1 4,Have lived in Seattle for 10 years,true,1 4,Mon,2
+TestUserC,testpassword,testuserC@email.com,first,last,Seattle,WA,95,1 2,I am an immgrant myself,true,1 3,Mon,2
+TestUserD,testpassword,testuserd@email.com,Immigrant User,Last,Seattle,WA,95,1 2,Just moved from Pakistan,False,1 3
