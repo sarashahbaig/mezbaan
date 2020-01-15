@@ -3,6 +3,8 @@ import Select from "react-select";
 import AuthCard from "../common/AuthCard";
 import { API_ROUTES } from "../../constants";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { MENU_ITEMS } from "../../constants";
 
 const DAYS = [
   { value: "sunday", label: "Sunday" },
@@ -14,42 +16,33 @@ const DAYS = [
   { value: "saturday", label: "Saturday" }
 ];
 
-const TASKS = [
-  { value: "Learning English", label: "Learning English" },
-  { value: "Learning to Drive", label: "Learning to Drive" },
-  { value: "Finding a School", label: "Finding a School" },
-  { value: "Finding a house/Apartment", label: "Finding a house/Apartment" },
-  { value: "Finding Food", label: "Finding Food" },
-  { value: "Finding Hospital", label: "Finding Hospital" },
-  { value: "Finding a Job", label: "Finding a Job" },
-  { value: "Filling out Form", label: "Filling out Form" },
-  { value: "With Legal matters", label: "With Legal matters" }
-];
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isVolunteer: true,
-      firstName: "",
-      lastName: "",
-      city: "",
-      state: "",
-      zipCode: "",
-      username: "",
-      password: "",
-      email: "",
+      isImmigrant: true,
+      firstName: "TestFirst",
+      lastName: "TestLast",
+      city: "Seattle",
+      state: "WA",
+      zipCode: "98105",
+      username: "testuser",
+      password: "password",
+      email: "test@testing.com",
       languages: "",
-      tasks: null,
+      services: null,
       days: null,
       hours: "",
-      description: "",
-      apiLanguages: []
+      description: "Desc",
+      apiLanguages: [],
+      apiServices: []
     };
   }
 
   componentDidMount() {
     this.getAllLanguages();
+    this.getAllServices();
   }
 
   getAllLanguages = () => {
@@ -73,10 +66,34 @@ class Register extends React.Component {
       });
   };
 
+  getAllServices = () => {
+    axios
+      .get(API_ROUTES.main + API_ROUTES.services)
+      .then(res => res.data)
+      .then(data => {
+        data.forEach(serv => {
+          const service = {
+            value: serv.id,
+            label: serv.service
+          };
+
+          this.setState({
+            apiServices: [...this.state.apiServices, service]
+          });
+          console.log(this.state.apiServices);
+        });
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   handleUserType = event => {
     const user = event.target.value;
     this.setState({
-      isVolunteer: user === "volunteer"
+      isVolunteer: user === "volunteer",
+      isImmigrant: user === "immigrant"
     });
   };
 
@@ -93,9 +110,9 @@ class Register extends React.Component {
     );
   };
 
-  handleTasksSelect = tasks => {
-    this.setState({ tasks }, () =>
-      console.log(`Option selected:`, this.state.tasks)
+  handleServicesSelect = services => {
+    this.setState({ services }, () =>
+      console.log(`Option selected:`, this.state.services)
     );
   };
 
@@ -106,12 +123,25 @@ class Register extends React.Component {
   };
   handleRegisterSubmit = event => {
     event.preventDefault();
-    this.props.handleSignUp({ ...this.state });
+
+    const languageValues = this.state.languages.map(lang => lang.value);
+    console.log(languageValues);
+
+    const serviceValues = this.state.services.map(serv => serv.value);
+    console.log(serviceValues);
+
+    this.props.handleSignUp({
+      ...this.state,
+      languages: languageValues,
+      services: serviceValues,
+      days: "Mon"
+    });
   };
 
   render() {
     const {
       isVolunteer,
+      isImmigrant,
       firstName,
       lastName,
       city,
@@ -121,11 +151,12 @@ class Register extends React.Component {
       password,
       email,
       languages,
-      tasks,
+      services,
       days,
       hours,
       description,
-      apiLanguages
+      apiLanguages,
+      apiServices
     } = this.state;
     return (
       <AuthCard title="Register">
@@ -151,9 +182,10 @@ class Register extends React.Component {
             id="inlineRadio2"
             value="user"
             onChange={this.handleUserType}
+            checked={isImmigrant}
           />
           <label className="form-check-label" htmlFor="inlineRadio2">
-            User
+            Immigrant
           </label>
         </div>
         <div className="dropdown-divider" />
@@ -269,9 +301,9 @@ class Register extends React.Component {
           </div>
           <div className="form-group">
             <Select
-              value={tasks}
-              onChange={this.handleTasksSelect}
-              options={TASKS}
+              value={services}
+              onChange={this.handleServicesSelect}
+              options={apiServices}
               isMulti={true}
             />
           </div>
@@ -315,9 +347,11 @@ class Register extends React.Component {
           </div>
 
           <div className="d-flex justify-content-center">
-            <button className="btn btn-primary flex-grow-1" type="submit">
-              Register
-            </button>
+            <Link to={`${API_ROUTES.login}`}>
+              <button className="btn btn-primary flex-grow-1" type="submit">
+                Register
+              </button>
+            </Link>
           </div>
         </form>
       </AuthCard>
