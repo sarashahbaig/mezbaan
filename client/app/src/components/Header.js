@@ -16,7 +16,8 @@ class Header extends React.Component {
     });
   };
   render() {
-    const { authenticated } = this.props;
+    const { authenticated, currentUser } = this.props;
+    const firstName = currentUser !== null ? currentUser.firstName : "";
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
@@ -31,7 +32,7 @@ class Header extends React.Component {
                 className="nav-link btn btn-link"
                 onClick={this.props.handleLogout}
               >
-                Logout
+                {`Logout ${firstName}`}
               </button>
             </li>
           ) : (
