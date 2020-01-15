@@ -1,5 +1,5 @@
 import csv
-from app import app, db
+from app import app, db, bcrypt
 from app.models import User, Language, Service
 
 def db_create_language():
@@ -56,7 +56,9 @@ def db_create_user():
                 column = column + 1
             
             user_data["languages"] = user_languages
-            user_data["services"] = user_services    
+            user_data["services"] = user_services
+            password = user_data["password_hash"]
+            user_data["password_hash"] = bcrypt.generate_password_hash(password) 
 
             user = User(*user_data.values())
             db.session.add(user)
