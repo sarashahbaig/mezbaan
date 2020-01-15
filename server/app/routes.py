@@ -85,14 +85,14 @@ def login():
   user = User.query.filter_by(username=username).first()
 
   if user is None:
-    return make_response("No user found", 404)
+    return abort(make_response("No user found", 404))
 
   user_pwd = user.password_hash
 
   if not bcrypt.check_password_hash(user_pwd, password):
     return make_response("Username or passowrd incorrect", 401)
 
-  return jsonify(user.serialize)
+  return jsonify(user.to_json())
 
 @app.route("/api/logout", methods=["GET"])
 def logout():
@@ -124,3 +124,9 @@ def get_services():
   services = [serv.to_json() for serv in Service.query]
   return jsonify(services)
 
+@app.route('/api/services/user/id/<int:user_id>', methods=['GET'])
+def get_user_services(user_id):
+  user = User.query.filter_by(id=user_id).first()
+  user_services = [service.to_json() for service in user.services]
+
+  return jsonify(user_services)
