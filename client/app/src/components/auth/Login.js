@@ -24,9 +24,11 @@ class Login extends React.Component {
 
   render() {
     const { username, password } = this.state;
+    const { error } = this.props;
     return (
       <AuthCard title="Login">
         <form onSubmit={this.handleLoginSubmit}>
+          {error && <div className="alert alert-danger">{error}</div>}
           <div class="form-group">
             <label for="username">Username</label>
             <input
