@@ -9,6 +9,7 @@ import form from "../../src/images/form.jpeg";
 import jobs from "../../src/images/jobs.jpg";
 import school from "../../src/images/school.jpeg";
 import { Link } from "react-router-dom";
+import { SIGNUP } from "../constants";
 
 // import Card from "../common/Card";
 
@@ -50,8 +51,8 @@ class Mission extends React.Component {
             <img src={school} className="card-img-top" alt="find food"></img>
           </div>
         </div>
-        <div>
-          <Link className="btn btn-primary btn-lg btn-block">Join Us</Link>
+        <div className="btn btn-primary btn-lg btn-block">
+          <Link to={`${SIGNUP.link}`}>Join Us</Link>
         </div>
       </section>
     );
