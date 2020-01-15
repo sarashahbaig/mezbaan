@@ -4,13 +4,13 @@ export const API_ROUTES = {
   register: "/register",
   login: "/login",
   afterlogin: "/afterlogin",
-  languages: "/languages"
+  languages: "/languages",
+  services: "/services"
 };
 export const MENU_ITEMS = [
   { name: "Login", link: "/login" },
   { name: "Register", link: "/register" },
   { name: "Mission", link: "/mission" }
-  // { name: "Join Us", link: "/register" }
 ];
 
 export const HOME = {
@@ -18,7 +18,6 @@ export const HOME = {
   link: "/"
 };
 
-export const MISSION = [
-  { name: "Mission", link: "/mission" },
-  { name: "Join Us", link: "/register" }
-];
+export const MISSION = { name: "Mission", link: "/mission" };
+
+export const SIGNUP = { name: "Sign Up as Volunteer", link: "/register" };
