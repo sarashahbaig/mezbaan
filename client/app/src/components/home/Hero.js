@@ -1,5 +1,7 @@
 import React from "react";
 import "./Hero.css";
+import { Link } from "react-router-dom";
+import { MISSION } from "../../constants";
 
 class Hero extends React.Component {
   render() {
@@ -9,7 +11,9 @@ class Hero extends React.Component {
           <div className="hero-text">
             <h1>Mezbaan</h1>
             <p>Welcome to our coummunity</p>
-            <button className="btn btn-primary">Learn More</button>
+            <Link to={`${MISSION.link}`}>
+              <button className="btn btn-primary">Learn More</button>
+            </Link>
           </div>
         </div>
       </div>
