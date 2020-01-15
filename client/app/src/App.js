@@ -1,27 +1,37 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect, Route, Switch, withRouter } from "react-router";
+import PrivateRoute from "./PrivateRoute";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/home/Home";
 import Footer from "./components/Footer";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import Afterlogin from "./components/Afterlogin";
+import UsersView from "./components/UsersView";
 import Mission from "./components/Mission";
 import Services from "./components/Services";
+import Invite from "./components/home/Invite";
 import { API_ROUTES } from "./constants";
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      authenticated: false
+      authenticated: false,
+      currentUser: "",
+      error: ""
     };
   }
 
   componentDidMount() {
-    this.getAllUsers();
+    // this.getAllUsers();
+    // window.localStorage.getItem("authenticated"),
+    // window.localStorage.getItem("currentUser"),
+    this.setState({
+      authenticated: window.localStorage.getItem("authenticated"),
+      currentUser: JSON.parse(window.localStorage.getItem("currentUser"))
+    });
   }
 
   getAllUsers = () => {
@@ -33,7 +43,8 @@ class App extends React.Component {
         this.setState({ users: data });
       })
       .catch(error => {
-        console.log(error);
+        console.log(error.message);
+        this.setState({ error: error.message });
       });
   };
   handleLogin = userdata => {
@@ -47,16 +58,22 @@ class App extends React.Component {
       })
       .then(res => {
         console.log(res);
-        this.setState({ authenticated: true });
-        this.props.history.push("/");
+        this.setState({ authenticated: true, currentUser: res.data });
+        window.localStorage.setItem("authenticated", true);
+        window.localStorage.setItem("currentUser", JSON.stringify(res.data));
+        this.props.history.push("/users");
       })
       .catch(error => {
         console.log(error);
+        console.log(error.response);
+        this.setState({ error: error.response.data });
       });
   };
 
   handleLogout = () => {
     this.setState({ authenticated: false });
+    window.localStorage.removeItem("authenticated");
+    window.localStorage.removeItem("currentUser");
     this.props.history.push("/");
   };
 
@@ -68,7 +85,7 @@ class App extends React.Component {
         console.log(res);
         this.setState({ authenticated: true });
         this.getAllUsers();
-        this.props.history.push("/");
+        this.props.history.push("/users");
       })
       .catch(error => {
         console.log(error);
@@ -76,13 +93,14 @@ class App extends React.Component {
   };
 
   render() {
-    const { users, authenticated } = this.state;
+    const { users, authenticated, currentUser, error } = this.state;
 
     return (
       <div>
         <Header
           handleLogout={this.handleLogout}
           authenticated={authenticated}
+          currentUser={currentUser}
         />
 
         <Switch>
@@ -93,17 +111,18 @@ class App extends React.Component {
             <Register handleSignUp={this.handleSignUp} />
           </Route>
           <Route path="/login">
-            <Login handleLogin={this.handleLogin} />
+            <Login handleLogin={this.handleLogin} error={error} />
           </Route>
           <Route path="/mission">
             <Mission />
           </Route>
-          <Route path="/afterlogin">
-            <Afterlogin />
-          </Route>
-          <Route path="/services">
+          <PrivateRoute path="/users">
+            <UsersView currentUser={currentUser} users={users} />
+          </PrivateRoute>
+
+          <PrivateRoute path="/services">
             <Services />
-          </Route>
+          </PrivateRoute>
         </Switch>
 
         <Footer />
