@@ -16,6 +16,11 @@ db.Column('service_id', db.Integer, db.ForeignKey('service.id'), primary_key=Tru
 db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
 )
 
+ratings = db.Table('user_ratings',
+db.Column('rating_id', db.Integer, db.ForeignKey('rating.id'), primary_key=True),
+db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
+)
+
 class Language(db.Model):
     _tablename__ = "language"
 
@@ -34,6 +39,14 @@ class Service(db.Model):
     def to_json(self):
         return dict(id=self.id, service=self.service)
 
+class Rating(db.Model):
+    _tablename__ = "rating"
+
+    id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column(db.Integer)
+
+    def to_json(self):
+        return dict(id=self.id, rating=self.rating)
 class User(db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
@@ -49,13 +62,15 @@ class User(db.Model):
     description = db.Column(db.String(500))
     password_hash = db.Column(db.String(200))
     is_volunteer = db.Column(db.Boolean, default=False)
+    ratings = db.relationship('Rating', secondary=ratings, lazy= 'subquery', backref=db.backref('user', lazy=True, uselist=False))  
     days_can_volunteer = db.Column(db.String(10))
-    time_can_volunteer = db.Column(db.Integer)    
+    time_can_volunteer = db.Column(db.Integer) 
+     
     
     def __repr__(self):
         return '<User {>'.format(self.username)
     
-    def __init__(self, username, password_hash, email, first_name, last_name, city , state, zip_code, languages, description, is_volunteer, services, days_can_volunteer="", time_can_volunteer=0):
+    def __init__(self, username, password_hash, email, first_name, last_name, city , state, zip_code, description, is_volunteer, languages, services, ratings=[], days_can_volunteer="", time_can_volunteer=0):
         self.username = username
         self.password_hash = password_hash 
         self.email = email 
@@ -64,12 +79,14 @@ class User(db.Model):
         self.city = city  
         self.state = state 
         self.zip_code = zip_code 
-        self.languages = languages 
         self.description = description
         self.is_volunteer = is_volunteer
+        self.languages = languages 
         self.services = services
+        self.ratings=ratings
         self.days_can_volunteer = days_can_volunteer
         self.time_can_volunteer = time_can_volunteer
+        
 
     def to_json(self):
         return  { "id": self.id,
@@ -82,6 +99,7 @@ class User(db.Model):
             "zipCode": self.zip_code,
             "languages": [language.to_json() for language in self.languages],
             "description": self.description,
+            "ratings": [rating.to_json() for rating in self.ratings],
             "isVolunteer": self.is_volunteer,
             "services": [service.to_json() for service in self.services],
             "daysCanVolunteer": self.days_can_volunteer,
