@@ -1,43 +1,61 @@
 import React from "react";
 import Card from "../common/Card";
 import landingpage from "../../images/landingpage.jpg";
+import law from "../../images/law.jpg";
+import learndriving from "../../images/learndriving.png";
+import fillingform from "../../images/fillingform.jpg";
+import { Link } from "react-router-dom";
+import { HOME } from "../../constants";
+import PhotoCard from "../common/PhotoCard";
 
+const FEATURES = [
+  {
+    img: learndriving,
+    title: "Learn Driving",
+    buttonText: "Learn More"
+  },
+  {
+    img: fillingform,
+    title: "Filling Forms",
+    buttonText: "Learn More"
+  },
+  {
+    img: law,
+    title: "Legal Advice",
+    buttonText: "Learn More"
+  }
+];
 class Features extends React.Component {
   render() {
     return (
-      <section>
-        <Card>
-          {/* <p className="auto" style={{width:"400px"}}> */}
-          <p className="text-center">
-            There are many different ways that individuals with all kinds of
-            experience can help. Examples include volunteering in
-          </p>
-          <ul className="text-center">
-            <ul>
-              <li> Teaching English as a second language.</li>
-              <li> Filling out forms.</li>
-              <li> Finding a right place to live in.</li>
-              <li>
-                Helping to find school for kids and <mark> many more </mark>.
-              </li>
-            </ul>
-          </ul>
-          <p className="text-center">
-            It's important to spend time exploring your options and which
-            opportunities are the best fit based on your interests, skills, and
-            the time you have available to volunteer.
-          </p>
-        </Card>
-        <img src={landingpage} className="img-fluid" alt="togtherimg" />
+      <div className="mb-3">
+        <h2 className="text-center text-secondary font-weight-light">
+          Get Help With
+        </h2>
 
-        <Card>
-          <p className="text-center">
-            This is the place were we invite worldwide people to provide
-            assistance and support by giving some time from there busy life to
-            the Immigrants who needs help for <mark> free </mark>.
-          </p>
-        </Card>
-      </section>
+        <div className="card-columns row">
+          {FEATURES.map(feature => {
+            const { title, img, buttonText } = feature;
+            return (
+              <div className="col-4 h-100 d-flex">
+                <PhotoCard
+                  background="bg-light"
+                  image={img}
+                  title={title}
+                  centerAlign={true}
+                >
+                  <Link
+                    className="text-center btn btn-primary"
+                    to={`${HOME.link}`}
+                  >
+                    {buttonText}
+                  </Link>
+                </PhotoCard>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 }

@@ -5,7 +5,7 @@ class AuthCard extends React.Component {
   render() {
     const { children, title } = this.props;
     return (
-      <div className="container">
+      <section className="container">
         <div className="row justify-content-center">
           <div className="col col-10 col-sm-12 col-md-8 col-lg-5">
             <Card>
@@ -14,7 +14,7 @@ class AuthCard extends React.Component {
             </Card>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

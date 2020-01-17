@@ -11,16 +11,16 @@ class Invite extends React.Component {
       <section>
         <div className="row">
           <div className="col">
-            <Link to={`${SIGNUP.link}`}>
+            {/* <Link to={`${SIGNUP.link}`}>
               <Card background="bg-warning">Sign Up as Volunteer</Card>
-            </Link>
+            </Link> */}
           </div>
           <div className="col">
-            <Link to={`${SIGNUP.link}`}>
+            {/* <Link to={`${SIGNUP.link}`}>
               <Card background="bg-success" button>
                 Sign Up as Immigrant
               </Card>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>

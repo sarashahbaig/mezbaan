@@ -2,6 +2,8 @@ import React from "react";
 import Hero from "./Hero";
 import Invite from "./Invite";
 import Features from "./Features";
+import Services from "./Services";
+import HowWorks from "./HowWorks";
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,13 +21,14 @@ class Home extends React.Component {
     const { id, username, email } = this.props;
 
     return (
-      <section>
+      <div>
         <Hero />
-        <div className="container-fluid">
-          <Invite />
+        <div className="container">
           <Features />
+          <HowWorks />
+          <Services />
         </div>
-      </section>
+      </div>
     );
   }
 }

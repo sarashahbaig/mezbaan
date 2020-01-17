@@ -36,9 +36,9 @@ class UsersView extends React.Component {
     const { currentUser } = this.props;
 
     return (
-      <div className="container">
+      <section className="container">
         <UserCardList users={users} />
-      </div>
+      </section>
     );
   }
 }

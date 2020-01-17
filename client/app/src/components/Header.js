@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HOME, MENU_ITEMS } from "../constants";
-
+import logo from "../../src/images/logo.svg";
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -20,26 +20,50 @@ class Header extends React.Component {
     const firstName = currentUser !== null ? currentUser.firstName : "";
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
-        <Link className="navbar-brand" to={`${HOME.link}`}>
-          {HOME.name}
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top d-flex shadow-lg bg-white rounded">
+        <span className="text-muted "></span>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="true"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <Link className="navbar-brand font-weight-bold " to={`${HOME.link}`}>
+          <img src={logo}></img> {HOME.name}
         </Link>
 
-        <ul className="navbar-nav justify-content-right ml-auto">
+        <ul className="navbar-nav justify-content-right ml-auto ">
           {authenticated ? (
-            <li className="nav-item">
-              <button
-                className="nav-link btn btn-link"
+            <React.Fragment>
+              <li
+                className="nav-item nav-link btn btn-link"
                 onClick={this.props.handleLogout}
               >
-                {`Logout ${firstName}`}
-              </button>
-            </li>
+                {`Logout`}
+              </li>
+
+              <li
+                className="nav-item nav-link btn btn-link"
+                // onClick={this.props.handleLogout}
+              >
+                {`Hi ${firstName}`}
+              </li>
+            </React.Fragment>
           ) : (
             MENU_ITEMS.map((item, index) => {
               return (
                 <li key={index} className="nav-item">
-                  <Link className="nav-link" to={`${item.link}`}>
+                  <Link
+                    className="nav-item nav-link btn btn-link"
+                    to={`${item.link}`}
+                  >
                     {item.name}
                   </Link>
                 </li>

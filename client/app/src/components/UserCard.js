@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import md5 from "md5";
 import Card from "./common/Card";
+import Rating from "./Rating";
 
 class UserCard extends Component {
   handleSendEmailClick = user => {
-    this.props.handleEmailSendClick(user)
+    this.props.handleEmailSendClick(user);
   };
   render() {
     console.log(md5("message"));
@@ -20,8 +21,10 @@ class UserCard extends Component {
       description,
       is_voluteer,
       services,
+      ratings,
       days_can_volunteer,
-      time_can_volunteer
+      time_can_volunteer,
+      currentRating
     } = user;
 
     const hash = md5(email);
@@ -42,7 +45,9 @@ class UserCard extends Component {
                 <li>{item.service}</li>
               ))}
             </ul>
+            <Rating ratings={ratings}/>
           </div>
+
           <div className="col-2">
             <div className="d-flex justify-content-end">
               <button
