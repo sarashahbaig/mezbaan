@@ -10,7 +10,9 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import UsersView from "./components/UsersView";
 import Mission from "./components/Mission";
-import Services from "./components/Services";
+import Services from "./components/home/Services";
+import Account from "./components/Account";
+import Rating from "./components/Rating";
 import Invite from "./components/home/Invite";
 import { API_ROUTES } from "./constants";
 class App extends React.Component {
@@ -119,10 +121,18 @@ class App extends React.Component {
           <PrivateRoute path="/users">
             <UsersView currentUser={currentUser} users={users} />
           </PrivateRoute>
-
+          <PrivateRoute path="/rating">
+            <Rating />
+          </PrivateRoute>
           <PrivateRoute path="/services">
             <Services />
           </PrivateRoute>
+          <PrivateRoute path="/account">
+            <Account currentUser={currentUser} />
+          </PrivateRoute>
+          <Route path="/account">
+            <Rating />
+          </Route>
         </Switch>
 
         <Footer />
