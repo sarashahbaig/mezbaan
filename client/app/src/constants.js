@@ -9,12 +9,12 @@ export const API_ROUTES = {
 };
 export const MENU_ITEMS = [
   { name: "Login", link: "/login" },
-  { name: "Register", link: "/register" },
-  { name: "Mission", link: "/mission" }
+  { name: "SignUp", link: "/register" },
+  // { name: "Mission", link: "/mission" }
 ];
 
 export const HOME = {
-  name: "Mezbaan",
+  name: "ezbaan",
   link: "/"
 };
 
