@@ -1,7 +1,13 @@
 from flask import Flask, request, jsonify, make_response, abort
 from app import app, db, bcrypt
-from app.models import User, Language, Service, Rating
+from app.models import User, Language, Service, Rating, Day
+from datetime import datetime
 
+def to_date(date_string): 
+    try:
+        return datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%fZ')
+    except ValueError:
+        raise ValueError('{} is not valid date in the format YYYY-MM-DD'.format(date_string))
 
 @app.route("/", methods=["GET"])
 def index():
@@ -22,9 +28,8 @@ def register():
   zip_code = request.json.get('zipCode')
   languages = request.json.get('languages')
   services = request.json.get('services')
-  ratings = request.json.get('ratings')
   days_can_volunteer = request.json.get('days')
-  time_can_volunteer = request.json.get('time_can_volunteer')
+  time_can_volunteer = request.json.get('datetimeAvailable')
   description = request.json.get('description')
 
  
@@ -47,13 +52,11 @@ def register():
     service = Service.query.filter_by(id=serv_id).first()
     user_services.append(service)
 
-  user_ratings = []
-  for rating_id in ratings:
-    rating = Rating.query.filter_by(id=rating_id).first()
-    user_ratings.append(rating)
+  user_days = []
+  for day_id in days_can_volunteer:
+    day = Day.query.filter_by(id=day_id).first()
+    user_days.append(day)
   
-  print(user_languages)
-  print(user_services)
 
   user_data = {
     "username": username,
@@ -68,9 +71,9 @@ def register():
     "is_volunteer": is_volunteer,
     "languages": user_languages,
     "services": user_services,
-    "ratings": user_ratings,
-    "days_can_volunteer": days_can_volunteer,
-    "time_can_volunteer": time_can_volunteer,
+    "ratings": [],
+    "days_can_volunteer": user_days,
+    "time_can_volunteer": to_date(time_can_volunteer)
   }
 
   user = User(*user_data.values())
