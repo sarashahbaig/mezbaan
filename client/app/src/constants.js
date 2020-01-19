@@ -10,7 +10,7 @@ export const API_ROUTES = {
 export const MENU_ITEMS = [
   { name: "Login", link: "/login" },
   { name: "SignUp", link: "/register" },
-  // { name: "Mission", link: "/mission" }
+  
 ];
 
 export const HOME = {
@@ -18,6 +18,7 @@ export const HOME = {
   link: "/"
 };
 
-export const MISSION = { name: "Mission", link: "/mission" };
+export const REGISTER = { name: "register", link: "/register" };
+export const USERFORM = { name: "UserForm", link: "/userform" };
 
 export const SIGNUP = { name: "Sign Up as Volunteer", link: "/register" };
