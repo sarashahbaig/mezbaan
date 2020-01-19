@@ -17,9 +17,24 @@ db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
 )
 
 ratings = db.Table('user_ratings',
-db.Column('rating_id', db.Integer, db.ForeignKey('rating.id'), primary_key=True),
-db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
+db.Column('rating_id', db.Integer, db.ForeignKey('rating.id')),
+db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
 )
+
+days = db.Table('user_days',
+db.Column('day_id', db.Integer, db.ForeignKey('day.id')),
+db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
+)
+
+class Day(db.Model):
+    _tablename__ = "day"
+
+    id = db.Column(db.Integer, primary_key=True)
+    day = db.Column(db.String(128))
+
+    def to_json(self):
+        return dict(id=self.id, day=self.day)
+
 
 class Language(db.Model):
     _tablename__ = "language"
@@ -57,15 +72,16 @@ class User(db.Model):
     city = db.Column(db.String(128))
     state = db.Column(db.String(128))
     zip_code = db.Column(db.String(128))
-    languages = db.relationship('Language', secondary=languages, lazy='subquery', backref=db.backref('user', lazy=True, uselist=False))
-    services = db.relationship('Service', secondary=services, lazy= 'subquery', backref=db.backref('user', lazy=True, uselist=False))
+    languages = db.relationship('Language', secondary=languages, lazy='subquery', backref=db.backref('user', lazy=True))
+    services = db.relationship('Service', secondary=services, lazy= 'subquery', backref=db.backref('user', lazy=True))
     description = db.Column(db.String(500))
     password_hash = db.Column(db.String(200))
     is_volunteer = db.Column(db.Boolean, default=False)
-    ratings = db.relationship('Rating', secondary=ratings, lazy= 'subquery', backref=db.backref('user', lazy=True, uselist=False))  
-    days_can_volunteer = db.Column(db.String(10))
-    time_can_volunteer = db.Column(db.Integer) 
-     
+    ratings = db.relationship('Rating', secondary=ratings, lazy= 'subquery', backref=db.backref('user', lazy=True))  
+    days_can_volunteer = db.relationship('Day', secondary=days, lazy='subquery', backref=db.backref('user', lazy=True))
+    time_can_volunteer = db.Column(db.DateTime, default=datetime.utcnow)
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_updated = db.Column(db.DateTime, onupdate=datetime.utcnow)
     
     def __repr__(self):
         return '<User {>'.format(self.username)
@@ -102,7 +118,9 @@ class User(db.Model):
             "ratings": [rating.to_json() for rating in self.ratings],
             "isVolunteer": self.is_volunteer,
             "services": [service.to_json() for service in self.services],
-            "daysCanVolunteer": self.days_can_volunteer,
-            "timeCanVolunteer": self.time_can_volunteer 
+            "daysCanVolunteer": [day.to_json() for day in self.days_can_volunteer],
+            "timeCanVolunteer": self.time_can_volunteer,
+            "date_created": self.date_created,
+            "date_update": self.date_updated
             }
         
