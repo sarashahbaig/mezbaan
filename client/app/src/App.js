@@ -15,6 +15,7 @@ import Account from "./components/Account";
 import Rating from "./components/Rating";
 import Invite from "./components/home/Invite";
 import { API_ROUTES } from "./constants";
+import UserForm from "./components/common/UserForm";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -85,9 +86,15 @@ class App extends React.Component {
       .post(API_ROUTES.main + API_ROUTES.register, userData)
       .then(res => {
         console.log(res);
-        this.setState({ authenticated: true });
-        this.getAllUsers();
-        this.props.history.push("/users");
+        // this.setState({ authenticated: true });
+        // this.getAllUsers();
+        // this.props.history.push("/users");
+      })
+      .then(() => {
+        this.handleLogin(userData);
+      })
+      .then(() => {
+        this.getAllUsers()
       })
       .catch(error => {
         console.log(error);
@@ -130,6 +137,7 @@ class App extends React.Component {
           <PrivateRoute path="/account">
             <Account currentUser={currentUser} />
           </PrivateRoute>
+
           <Route path="/account">
             <Rating />
           </Route>
