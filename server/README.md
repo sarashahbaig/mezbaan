@@ -13,6 +13,14 @@
 
 # OR, simply run this bash script file
 
+`export FLASK_APP=capstone.py`
+
+`source ~/.virtualenvs/capstone/bin/activate`  
+`flask shell`
+`./script.sh`
+
+`flask run`
+
 `./script.sh`
 
 # How to add languages and services in sql-script
