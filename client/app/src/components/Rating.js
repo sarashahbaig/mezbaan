@@ -18,10 +18,22 @@ class Rating extends React.Component {
   caculateRating = () => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     const ratings = this.props.ratings.map(item => item.rating);
-    const totalRatings = ratings.reduce(reducer, 0);
-    console.log(ratings, totalRatings);
-    const ar = new Array(totalRatings);
-    this.setState({ userRating: totalRatings, ratingArr: ar });
+
+    // console.log(ratings, sumOfRatings);
+
+    const totalUsersRated = this.props.ratings.length;
+    const sumofMaxRatingOfUserCount = totalUsersRated * 5;
+    const sumOfRatings = ratings.reduce(reducer, 0);
+    const rating = (sumOfRatings * 5) / sumofMaxRatingOfUserCount;
+
+    //     total users rated: 6
+    // sum_of_max_rating_of_user_count: 6 x 5 = 30
+    // sum_of_rating: 25
+
+    // rating = (25 * 5) / 30
+
+    const ar = Array.from({ length: rating }).fill(0);
+    this.setState({ userRating: sumOfRatings, ratingArr: ar });
   };
 
   render() {
@@ -30,8 +42,8 @@ class Rating extends React.Component {
 
     return (
       <div>
-        Rating:{" "}
         <div className="d-flex">
+          Rating:&nbsp;
           {ratingArr.map(item => (
             <Star />
           ))}

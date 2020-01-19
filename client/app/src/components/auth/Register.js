@@ -1,5 +1,7 @@
 import React from "react";
 import Select from "react-select";
+import { DateTime } from "react-datetime-bootstrap";
+import moment from "moment";
 import AuthCard from "../common/AuthCard";
 import { API_ROUTES } from "../../constants";
 import axios from "axios";
@@ -7,36 +9,36 @@ import { Link } from "react-router-dom";
 import { MENU_ITEMS } from "../../constants";
 
 const DAYS = [
-  { value: "sunday", label: "Sunday" },
-  { value: "monday", label: "Monday" },
-  { value: "tuesday", label: "Tuesday" },
-  { value: "wendesday", label: "Wendesday" },
-  { value: "thursday", label: "Thursday" },
-  { value: "friday", label: "Friday" },
-  { value: "saturday", label: "Saturday" }
+  { value: 1, label: "Monday" },
+  { value: 2, label: "Tuesday" },
+  { value: 3, label: "Wendesday" },
+  { value: 4, label: "Thursday" },
+  { value: 5, label: "Friday" },
+  { value: 6, label: "Saturday" },
+  { value: 7, label: "Sunday" }
 ];
 
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedDatetime: moment(),
       isVolunteer: true,
-      isImmigrant: true,
-      firstName: "TestFirst",
-      lastName: "TestLast",
-      city: "Seattle",
-      state: "WA",
-      zipCode: "98105",
-      username: "testuser",
-      password: "password",
-      email: "test@testing.com",
-      languages: "",
+      firstName: "",
+      lastName: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      username: "",
+      password: "",
+      email: "",
+      languages: null,
       services: null,
-      days: null,
-      hours: "",
-      description: "Desc",
-      apiLanguages: [],
-      apiServices: []
+      days: "",
+      datetimeAvailable: "",
+      description: "",
+      apiLanguages: "",
+      apiServices: ""
     };
   }
 
@@ -92,8 +94,7 @@ class Register extends React.Component {
   handleUserType = event => {
     const user = event.target.value;
     this.setState({
-      isVolunteer: user === "volunteer",
-      isImmigrant: user === "immigrant"
+      isVolunteer: user === "volunteer"
     });
   };
 
@@ -108,6 +109,10 @@ class Register extends React.Component {
     this.setState({ languages }, () =>
       console.log(`Option selected:`, this.state.languages)
     );
+  };
+
+  handleDayInput = datetime => {
+    this.setState({ datetimeAvailable: datetime, selectedDatetime: datetime });
   };
 
   handleServicesSelect = services => {
@@ -130,18 +135,22 @@ class Register extends React.Component {
     const serviceValues = this.state.services.map(serv => serv.value);
     console.log(serviceValues);
 
+    const daysValues = this.state.days.map(day => day.value);
+
+    console.log(daysValues);
+
     this.props.handleSignUp({
       ...this.state,
       languages: languageValues,
       services: serviceValues,
-      days: "Mon"
+      days: daysValues
     });
   };
 
   render() {
     const {
+      selectedDatetime,
       isVolunteer,
-      isImmigrant,
       firstName,
       lastName,
       city,
@@ -182,7 +191,6 @@ class Register extends React.Component {
             id="inlineRadio2"
             value="user"
             onChange={this.handleUserType}
-            checked={isImmigrant}
           />
           <label className="form-check-label" htmlFor="inlineRadio2">
             Immigrant
@@ -292,6 +300,7 @@ class Register extends React.Component {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="hours">Languages You Speak</label>
             <Select
               value={languages}
               onChange={this.handleLanguagesSelect}
@@ -300,6 +309,9 @@ class Register extends React.Component {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="hours">{`Services You ${
+              isVolunteer ? `Can` : `Want`
+            } Help With`}</label>
             <Select
               value={services}
               onChange={this.handleServicesSelect}
@@ -307,30 +319,27 @@ class Register extends React.Component {
               isMulti={true}
             />
           </div>
-
-          {isVolunteer && (
-            <div>
-              <div className="form-group">
-                <Select
-                  value={days}
-                  onChange={this.handleDaysSelect}
-                  options={DAYS}
-                  isMulti={true}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="hours">Time available to help</label>
-                <input
-                  className="form-control"
-                  id="hours"
-                  type="text"
-                  name="hours"
-                  value={hours}
-                  onChange={this.handleInput}
-                />
-              </div>
+          <div>
+            <div className="form-group">
+              <label htmlFor="hours">Day(s) Available</label>
+              <Select
+                value={days}
+                onChange={this.handleDaysSelect}
+                options={DAYS}
+                isMulti={true}
+              />
             </div>
-          )}
+            <div className="form-group">
+              <label htmlFor="hours">Time available to help</label>
+              <DateTime
+                pickerOptions={{ format: "LL" }}
+                value={selectedDatetime}
+                name="days"
+                onChange={this.handleDayInput}
+              />
+            </div>
+          </div>
+
           <div className="form-group">
             <label htmlFor="description">
               Write a short intro about yourself
@@ -345,13 +354,10 @@ class Register extends React.Component {
               onChange={this.handleInput}
             />
           </div>
-
           <div className="d-flex justify-content-center">
-            <Link to={`${API_ROUTES.login}`}>
-              <button className="btn btn-primary flex-grow-1" type="submit">
-                Register
-              </button>
-            </Link>
+            <button className="btn btn-primary flex-grow-1" type="submit">
+              Register
+            </button>
           </div>
         </form>
       </AuthCard>

@@ -6,9 +6,9 @@ import jobs from "../../images/jobs.jpg";
 
 const SERVICES = [
   {
-    title: "Finding a Driving",
+    title: "Finding a Car",
     image: buycar,
-    description: " can help you prepare for your driver license exam"
+    description: " I Can help you find a car or a place best to go."
   },
   {
     title: "Finding a Tutoring",
@@ -19,7 +19,7 @@ const SERVICES = [
   {
     title: "Finding Jobs",
     image: jobs,
-    description: "I can help finding and applying jobs online"
+    description: "I can help finding and applying jobs online."
   }
 ];
 

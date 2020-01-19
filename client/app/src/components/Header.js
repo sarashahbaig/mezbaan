@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HOME, MENU_ITEMS } from "../constants";
+import { HOME, MENU_ITEMS, USERFORM } from "../constants";
 import logo from "../../src/images/logo.svg";
 class Header extends React.Component {
   constructor(props) {
@@ -49,11 +49,11 @@ class Header extends React.Component {
                 {`Logout`}
               </li>
 
-              <li
-                className="nav-item nav-link btn btn-link"
-                // onClick={this.props.handleLogout}
-              >
-                {`Hi ${firstName}`}
+              <li>
+                <Link
+                  className="nav-item nav-link btn btn-link"
+                  to={`${USERFORM.link}`}
+                >{`Hi ${firstName}`}</Link>
               </li>
             </React.Fragment>
           ) : (

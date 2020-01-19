@@ -21,7 +21,6 @@ class UserForm extends React.Component {
     super(props);
     this.state = {
       isVolunteer: true,
-      isImmigrant: true,
       firstName: "",
       lastName: "",
       city: "",
@@ -92,8 +91,7 @@ class UserForm extends React.Component {
   handleUserType = event => {
     const user = event.target.value;
     this.setState({
-      isVolunteer: user === "volunteer",
-      isImmigrant: user === "immigrant"
+      isVolunteer: user === "volunteer"
     });
   };
 
@@ -141,7 +139,6 @@ class UserForm extends React.Component {
   render() {
     const {
       isVolunteer,
-      isImmigrant,
       firstName,
       lastName,
       city,
@@ -150,7 +147,6 @@ class UserForm extends React.Component {
       username,
       password,
       email,
-
       services,
       days,
       hours,
@@ -189,7 +185,6 @@ class UserForm extends React.Component {
             id="inlineRadio2"
             value="user"
             onChange={this.handleUserType}
-            checked={isImmigrant}
           />
           <label className="form-check-label" htmlFor="inlineRadio2">
             Immigrant

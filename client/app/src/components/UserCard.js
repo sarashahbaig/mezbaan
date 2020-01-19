@@ -16,10 +16,10 @@ class UserCard extends Component {
       lastName,
       city,
       state,
-      zip_code,
+      zipCode,
       languages,
       description,
-      is_voluteer,
+      isVoluteer,
       services,
       ratings,
       days_can_volunteer,
@@ -27,25 +27,44 @@ class UserCard extends Component {
       currentRating
     } = user;
 
+    const { img } = this.props;
     const hash = md5(email);
     return (
       <Card>
         <div className="row">
           <div className="col-3">
-            <img src={`https://www.gravatar.com/avatar/${hash}`} />
+            <img className="rounded-circle pr-3" src={img} />
           </div>
           <div className="col-7">
             <h6>
               {firstName} {lastName}
             </h6>
-            <p>Languages: {languages.map(item => item.language)}</p>
-            <div>Services:</div>
-            <ul>
-              {services.map(item => (
-                <li>{item.service}</li>
-              ))}
-            </ul>
-            <Rating ratings={ratings}/>
+            <div>
+              <p>Email: {email}</p>
+              <p>
+                <span className="text-danger">
+                  Location: {state} {zipCode}
+                </span>
+              </p>
+            </div>
+
+            <p>
+              <span className="text-danger">Languages:&nbsp;</span>
+              {languages
+                .map(item => {
+                  return `${item.language} `;
+                })
+                .join("- ")}
+            </p>
+            <p>
+              <span className="text-danger">Services:&nbsp;</span>
+              {services
+                .map(item => {
+                  return `${item.service} `;
+                })
+                .join("- ")}
+            </p>
+            {!isVoluteer && <Rating ratings={ratings} />}
           </div>
 
           <div className="col-2">
