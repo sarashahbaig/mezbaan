@@ -129,13 +129,15 @@ class Register extends React.Component {
   handleRegisterSubmit = event => {
     event.preventDefault();
 
-    const languageValues = this.state.languages.map(lang => lang.value);
+    const languageValues =
+      this.state.languages && this.state.languages.map(lang => lang.value);
     console.log(languageValues);
 
-    const serviceValues = this.state.services.map(serv => serv.value);
+    const serviceValues =
+      this.state.services && this.state.services.map(serv => serv.value);
     console.log(serviceValues);
 
-    const daysValues = this.state.days.map(day => day.value);
+    const daysValues = this.state.days && this.state.days.map(day => day.value);
 
     console.log(daysValues);
 
