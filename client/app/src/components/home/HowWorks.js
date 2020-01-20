@@ -46,7 +46,7 @@ class HowWorks extends Component {
                       "flex-row-reverse mr-5"}`}
                   >
                     <p>{discription}</p>
-                    <img className="img-responsive icon mb-3" src={img}></img>
+                    <img className="img-responsive icon" src={img}></img>
                   </div>
                 </div>
               );
