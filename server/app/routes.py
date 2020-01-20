@@ -160,6 +160,67 @@ def get_user_services(user_id):
 
   return jsonify(user_services)
 
+
+@app.route('/api/updateProfile', methods=["POST"])
+def update_user():
+
+  user_id = request.json.get('id')
+  is_volunteer = request.json.get('isVolunteer')
+  username = request.json.get('username')
+  email = request.json.get('email')
+  password = request.json.get('password')
+  first_name = request.json.get('firstName')
+  last_name = request.json.get('lastName')
+  city = request.json.get('city')
+  state = request.json.get('state')
+  zip_code = request.json.get('zipCode')
+  languages = request.json.get('languages')
+  services = request.json.get('services')
+  days_can_volunteer = request.json.get('daysCanVolunteer')
+  time_can_volunteer = request.json.get('datetimeAvailable')
+  description = request.json.get('description')
+
+  user = User.query.filter_by(id=user_id).first()
+
+  user_languages = []
+  for lang in languages:
+    language = Language.query.filter_by(id=lang["id"]).first()
+    user_languages.append(language)
+  
+
+  user_services = []
+  for service in services:
+    service = Service.query.filter_by(id=service["id"]).first()
+    user_services.append(service)
+
+  user_days = []
+  for day in days_can_volunteer:
+    day = Day.query.filter_by(id=day["id"]).first()
+    user_days.append(day)
+
+
+
+  user.first_name = first_name
+  user.last_name = last_name
+  user.city = city
+  user.state = state
+  user.zip_code = zip_code
+  user.languages = user_languages
+  user.services = user_services
+  user.days_can_volunteer  = user_days
+  user.time_can_volunteer = time_can_volunteer
+  user.description = description
+
+
+  db.session.commit()
+
+
+
+  
+
+
+  return jsonify(user.to_json())
+
 @app.route('/api/services/<int:service_id>', methods=["POST"])
 def update_user_service(service_id):
   db_service = Service.query.filter_by(id=service_id).first()
