@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.getAllUsers();
+    this.getAllUsers();
     // window.localStorage.getItem("authenticated"),
     // window.localStorage.getItem("currentUser"),
     this.setState({
@@ -52,24 +52,27 @@ class App extends React.Component {
   };
   handleLogin = userdata => {
     const { username, password } = userdata;
-
-    console.log(userdata);
     axios
       .post(API_ROUTES.main + API_ROUTES.login, {
         username: username,
         password: password
       })
       .then(res => {
+        this.getAllUsers();
         console.log(res);
         this.setState({ authenticated: true, currentUser: res.data });
         window.localStorage.setItem("authenticated", true);
         window.localStorage.setItem("currentUser", JSON.stringify(res.data));
+      })
+      .then(() => {
         this.props.history.push("/users");
       })
+
       .catch(error => {
         console.log(error);
         console.log(error.response);
-        this.setState({ error: error.response.data });
+        this.setState({ error: error.response });
+        // removied .datta
       });
   };
 
@@ -93,9 +96,7 @@ class App extends React.Component {
       .then(() => {
         this.handleLogin(userData);
       })
-      .then(() => {
-        this.getAllUsers()
-      })
+
       .catch(error => {
         console.log(error);
       });
@@ -122,12 +123,10 @@ class App extends React.Component {
           <Route path="/login">
             <Login handleLogin={this.handleLogin} error={error} />
           </Route>
-          <Route path="/mission">
-            <Mission />
-          </Route>
-          <PrivateRoute path="/users">
+
+          <Route path="/users">
             <UsersView currentUser={currentUser} users={users} />
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/rating">
             <Rating />
           </PrivateRoute>

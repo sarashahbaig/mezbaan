@@ -32,7 +32,7 @@ class Header extends React.Component {
           aria-expanded="true"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
         <Link className="navbar-brand font-weight-bold " to={`${HOME.link}`}>

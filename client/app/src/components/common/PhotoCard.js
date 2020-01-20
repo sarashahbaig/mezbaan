@@ -8,7 +8,6 @@ class PhotoCard extends React.Component {
       image,
       title,
       description,
-      buttonText,
       centerAlign
     } = this.props;
     return (

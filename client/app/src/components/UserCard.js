@@ -27,54 +27,59 @@ class UserCard extends Component {
       currentRating
     } = user;
 
-    const { img } = this.props;
+    const { img, buttonText } = this.props;
     const hash = md5(email);
     return (
       <Card>
         <div className="row">
           <div className="col-3">
-            <img className="rounded-circle pr-3" src={img} />
+            <img className="rounded-circle" src={img} />
           </div>
-          <div className="col-7">
+          <div className="col-7 text-info">
             <h6>
-              {firstName} {lastName}
+              Name: {firstName} {lastName}
             </h6>
-            <div>
+            <div className="text-info">
               <p>Email: {email}</p>
               <p>
-                <span className="text-danger">
+                <span className="text-info">
                   Location: {state} {zipCode}
                 </span>
               </p>
             </div>
 
-            <p>
-              <span className="text-danger">Languages:&nbsp;</span>
+            <p className="text-info">
+              <span>Languages:&nbsp;</span>
               {languages
                 .map(item => {
                   return `${item.language} `;
                 })
                 .join("- ")}
             </p>
-            <p>
-              <span className="text-danger">Services:&nbsp;</span>
+            <p className="text-info">
+              <span>Services:&nbsp;</span>
               {services
                 .map(item => {
                   return `${item.service} `;
                 })
                 .join("- ")}
             </p>
-            {!isVoluteer && <Rating ratings={ratings} />}
+            <div className="text-info">
+              {!isVoluteer && <Rating ratings={ratings} />}
+            </div>
           </div>
 
           <div className="col-2">
             <div className="d-flex justify-content-end">
-              <button
-                class="btn btn-primary"
-                onClick={() => this.handleSendEmailClick(user)}
-              >
-                Send an Email
-              </button>
+              {buttonText && (
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.handleSendEmailClick(user)}
+                >
+                  Send Email
+                </button>
+              )}
+              {this.props.children}
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ class Footer extends React.Component {
         <div className="row">
           <div className="col">
             <h6>About</h6>
-            <h6>Contant</h6>
+            <h6>Contact</h6>
           </div>
           <div className="col">
             <h6>Terms of Use</h6>

@@ -29,8 +29,8 @@ class Login extends React.Component {
       <AuthCard title="Login">
         <form onSubmit={this.handleLoginSubmit}>
           {error && <div className="alert alert-danger">{error}</div>}
-          <div class="form-group">
-            <label for="username">Username</label>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
             <input
               className="form-control"
               id="username"
@@ -40,8 +40,8 @@ class Login extends React.Component {
               onChange={this.handleInput}
             />
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">password</label>
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">password</label>
             <input
               className="form-control"
               id="password"

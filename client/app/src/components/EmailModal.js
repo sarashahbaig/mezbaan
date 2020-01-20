@@ -48,7 +48,7 @@ class EmailModal extends Component {
               </button>
             </div>
             <div className="modal-body">
-              <div class="form-group">
+              <div className="form-group">
                 <label htmlFor="subject">Subject</label>
                 <input
                   className="form-control"
@@ -59,7 +59,7 @@ class EmailModal extends Component {
                   onChange={this.handleInputChange}
                 />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label htmlFor="message">Message</label>
                 <textarea
                   className="form-control"

@@ -45,7 +45,7 @@ class Rating extends React.Component {
         <div className="d-flex">
           Rating:&nbsp;
           {ratingArr.map(item => (
-            <Star />
+            <Star key={item} />
           ))}
         </div>
       </div>
