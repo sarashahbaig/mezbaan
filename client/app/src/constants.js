@@ -5,12 +5,12 @@ export const API_ROUTES = {
   login: "/login",
   afterlogin: "/afterlogin",
   languages: "/languages",
-  services: "/services"
+  services: "/services",
+  updateProfile: "/updateProfile"
 };
 export const MENU_ITEMS = [
   { name: "Login", link: "/login" },
-  { name: "SignUp", link: "/register" },
-  
+  { name: "SignUp", link: "/register" }
 ];
 
 export const HOME = {
@@ -19,6 +19,6 @@ export const HOME = {
 };
 
 export const REGISTER = { name: "register", link: "/register" };
-export const USERFORM = { name: "UserForm", link: "/userform" };
+export const USERFORM = { name: "account", link: "/account" };
 
 export const SIGNUP = { name: "Sign Up as Volunteer", link: "/register" };
