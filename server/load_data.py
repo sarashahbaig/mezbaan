@@ -98,6 +98,10 @@ def db_create_user():
                 key = keys[column]
                 user_data[key] = col
                 column = column + 1
+            print("+++++++++++++++++++++++++++++++++")
+            print(row)
+            print(user_data)
+            print("+++++++++++++++++++++++++++++++++")
             
             user_data["languages"] = user_languages
             user_data["services"] = user_services
@@ -106,10 +110,7 @@ def db_create_user():
             password = user_data["password_hash"]
             user_data["password_hash"] = bcrypt.generate_password_hash(password)
 
-            print("+++++++++++++++++++++++++++++++++")
-            print(row)
-            print(user_data)
-            print("+++++++++++++++++++++++++++++++++")
+            
 
             user = User(*user_data.values())
             db.session.add(user)
