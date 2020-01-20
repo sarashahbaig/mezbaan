@@ -35,7 +35,7 @@ class Services extends React.Component {
           {SERVICES.map(service => {
             const { title, image, description, buttonText } = service;
             return (
-              <div className="col-4 h-100 d-flex">
+              <div className="col-4 h-100 d-flex" key={title}>
                 <PhotoCard
                   background="bg-light"
                   title={title}

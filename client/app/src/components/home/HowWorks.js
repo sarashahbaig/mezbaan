@@ -32,7 +32,7 @@ class HowWorks extends Component {
             {LOOKUP.map((look, index) => {
               const { img, title, discription } = look;
               return (
-                <div>
+                <div key={title}>
                   <div
                     className={`d-flex ${index === 1 && "flex-row-reverse"}`}
                   >
@@ -46,7 +46,7 @@ class HowWorks extends Component {
                       "flex-row-reverse mr-5"}`}
                   >
                     <p>{discription}</p>
-                    <img className="img-responsive icon m-5" src={img}></img>
+                    <img className="img-responsive icon mb-3" src={img}></img>
                   </div>
                 </div>
               );

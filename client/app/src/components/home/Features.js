@@ -38,7 +38,7 @@ class Features extends React.Component {
           {FEATURES.map(feature => {
             const { title, img, description } = feature;
             return (
-              <div className="col-4 h-100 d-flex">
+              <div className="col-4 h-100 d-flex" key={title}>
                 <PhotoCard
                   background="bg-light"
                   image={img}

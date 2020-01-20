@@ -11,7 +11,7 @@ export default class SearchFeature extends Component {
         </h6>
         <form>
           <input
-            class="form-control mr-sm-2 outline-success my-2 my-sm-0"
+            className="form-control mr-sm-2 outline-success my-2 my-sm-0"
             type="search"
             placeholder="Search"
             aria-label="Search"
