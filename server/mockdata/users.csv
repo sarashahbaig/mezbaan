@@ -1,6 +1,6 @@
 sam,password,sam@email.com,Sam,John,Seattle,WA,95089,Seattle Native,true,1 2 3,1 2,1 2 3 1,1 2,2020-01-08T19:00:00.123Z
-crist,password,crist@email.com,Crist,Nicole,Seattle,WA,95089,Seattle Native,true,1 2 3,1 2,1 2 3 1,1 2,2020-01-08T19:00:00.123Z
-moon,password,moon@email.com,Moon,Maryr,Seattle,WA,95089,Seattle Native,true,1 2 3,1 2,1 2 3 1,1 2,2020-01-08T19:00:00.123Z
-sameera,password,sameera@email.com,Sameera,George,Seattle,WA,95087,Seattle Naive,false,1 2 3,1 2,1 2 3 2,1 2,2020-01-08T19:00:00.123Z
-yam,password,yam@email.com,Yanni,Sohol,Seattle,WA,95087,Seattle Naive,false,1 2 3,1 2,1 2 3 2,1 2,2020-01-08T19:00:00.123Z
-whex,password,whex@email.com,Whex,Woa,Seattle,WA,95087,Seattle Naive,false,1 2 3,1 2,1 2 3 2,1 2,2020-01-08T19:00:00.123Z
+crist,password,crist@email.com,Crist,Nicole,Seattle,WA,95089,Seattle Native,true,4 5 6,3 4,1 2 3 1,1 2,2020-01-08T19:00:00.123Z
+moon,password,moon@email.com,Moon,Maryr,Seattle,WA,95089,Seattle Native,true,7 8 9,5 6,1 2 3 1,1 2,2020-01-08T19:00:00.123Z
+sameera,password,sameera@email.com,Sameera,George,Seattle,WA,95087,Seattle Naive,false,10 11 12,7 8,1 2 3 2,1 2,2020-01-08T19:00:00.123Z
+yam,password,yam@email.com,Yanni,Sohol,Seattle,WA,95087,Seattle Naive,false,13 14 15,1 2,1 2 3 2,1 2,2020-01-08T19:00:00.123Z
+whex,password,whex@email.com,Whex,Woa,Seattle,WA,95087,Seattle Naive,false,16 17 18,1 2,1 2 3 2,3 4,2020-01-08T19:00:00.123Z
