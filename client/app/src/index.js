@@ -1,8 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+// import Header from "./header";
+// import Footer from "./footer";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = document.getElementById("root");
 
-
+ReactDOM.render(
+  <Router basename={process.env.PUBLIC_URL}>
+    <App />
+  </Router>,
+  root
+);
