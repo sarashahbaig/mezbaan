@@ -1,23 +1,38 @@
 {
   "files": {
-    "main.css": "/mezbaan/static/css/main.f345617f.chunk.css",
-    "main.js": "/mezbaan/static/js/main.fdca2a29.chunk.js",
-    "main.js.map": "/mezbaan/static/js/main.fdca2a29.chunk.js.map",
+    "main.css": "/mezbaan/static/css/main.602c6c12.chunk.css",
+    "main.js": "/mezbaan/static/js/main.d0059dcd.chunk.js",
+    "main.js.map": "/mezbaan/static/js/main.d0059dcd.chunk.js.map",
     "runtime-main.js": "/mezbaan/static/js/runtime-main.c8deaa77.js",
     "runtime-main.js.map": "/mezbaan/static/js/runtime-main.c8deaa77.js.map",
-    "static/js/2.a48997a3.chunk.js": "/mezbaan/static/js/2.a48997a3.chunk.js",
-    "static/js/2.a48997a3.chunk.js.map": "/mezbaan/static/js/2.a48997a3.chunk.js.map",
+    "static/css/2.64a99b10.chunk.css": "/mezbaan/static/css/2.64a99b10.chunk.css",
+    "static/js/2.96542ea5.chunk.js": "/mezbaan/static/js/2.96542ea5.chunk.js",
+    "static/js/2.96542ea5.chunk.js.map": "/mezbaan/static/js/2.96542ea5.chunk.js.map",
     "index.html": "/mezbaan/index.html",
-    "precache-manifest.361b3815c41b5af1f9b1108f34d760bf.js": "/mezbaan/precache-manifest.361b3815c41b5af1f9b1108f34d760bf.js",
+    "precache-manifest.8c7fc949bd0f7584de6a2fd4b73b57b4.js": "/mezbaan/precache-manifest.8c7fc949bd0f7584de6a2fd4b73b57b4.js",
     "service-worker.js": "/mezbaan/service-worker.js",
-    "static/css/main.f345617f.chunk.css.map": "/mezbaan/static/css/main.f345617f.chunk.css.map",
-    "static/js/2.a48997a3.chunk.js.LICENSE": "/mezbaan/static/js/2.a48997a3.chunk.js.LICENSE",
-    "static/media/Hero.css": "/mezbaan/static/media/hero.1b31b8d5.jpg"
+    "static/css/2.64a99b10.chunk.css.map": "/mezbaan/static/css/2.64a99b10.chunk.css.map",
+    "static/css/main.602c6c12.chunk.css.map": "/mezbaan/static/css/main.602c6c12.chunk.css.map",
+    "static/js/2.96542ea5.chunk.js.LICENSE": "/mezbaan/static/js/2.96542ea5.chunk.js.LICENSE",
+    "static/media/Hero.css": "/mezbaan/static/media/buildings.2bd7ec44.jpg",
+    "static/media/buycar.jpg": "/mezbaan/static/media/buycar.3e01c2d6.jpg",
+    "static/media/connect.svg": "/mezbaan/static/media/connect.a801c83c.svg",
+    "static/media/create.svg": "/mezbaan/static/media/create.72b5ce52.svg",
+    "static/media/english.jpg": "/mezbaan/static/media/english.2dc99fe8.jpg",
+    "static/media/fillingform.jpg": "/mezbaan/static/media/fillingform.70d89051.jpg",
+    "static/media/jobs.jpg": "/mezbaan/static/media/jobs.d02212d4.jpg",
+    "static/media/landingpage.jpg": "/mezbaan/static/media/landingpage.c106f9d2.jpg",
+    "static/media/law.jpg": "/mezbaan/static/media/law.fa5b2fcd.jpg",
+    "static/media/learndriving.png": "/mezbaan/static/media/learndriving.429815d5.png",
+    "static/media/logo.svg": "/mezbaan/static/media/logo.deb353f5.svg",
+    "static/media/search.svg": "/mezbaan/static/media/search.a9463d97.svg",
+    "static/media/star.svg": "/mezbaan/static/media/star.08c28c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c8deaa77.js",
-    "static/js/2.a48997a3.chunk.js",
-    "static/css/main.f345617f.chunk.css",
-    "static/js/main.fdca2a29.chunk.js"
+    "static/css/2.64a99b10.chunk.css",
+    "static/js/2.96542ea5.chunk.js",
+    "static/css/main.602c6c12.chunk.css",
+    "static/js/main.d0059dcd.chunk.js"
   ]
 }
