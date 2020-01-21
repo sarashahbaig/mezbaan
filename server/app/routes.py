@@ -39,7 +39,7 @@ def register():
   if username is None or email is None or password is None:
       return make_response("One of the fields is missing", 400)
 
-  pwd_hash = bcrypt.generate_password_hash(password)
+  pwd_hash = bcrypt.generate_password_hash(password).decode('utf-8')
 
   user_languages = []
   for lang_id in languages:

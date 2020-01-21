@@ -9,7 +9,7 @@ import App from "./App";
 const root = document.getElementById("root");
 
 ReactDOM.render(
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <App />
   </Router>,
   root

@@ -1,5 +1,5 @@
 export const API_ROUTES = {
-  main: "http://mezbaan.herokuapp.com/api", // "http://127.0.0.1:5000/api",
+  main: "https://mezbaan.herokuapp.com/api", // "http://127.0.0.1:5000/api",
   users: "/users",
   register: "/register",
   login: "/login",
