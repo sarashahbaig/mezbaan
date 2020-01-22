@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8267b5938365aa985160317998262a30",
+    "revision": "fdde448eb7b6ea41698581ccf570715a",
     "url": "/mezbaan/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mezbaan/static/css/2.64a99b10.chunk.css"
   },
   {
-    "revision": "2560f2a3fe6345faee59",
+    "revision": "891e8029ed768d8d06ff",
     "url": "/mezbaan/static/css/main.602c6c12.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mezbaan/static/js/2.6d7ae3aa.chunk.js.LICENSE"
   },
   {
-    "revision": "2560f2a3fe6345faee59",
-    "url": "/mezbaan/static/js/main.d8e6cf34.chunk.js"
+    "revision": "891e8029ed768d8d06ff",
+    "url": "/mezbaan/static/js/main.ec42dc4f.chunk.js"
   },
   {
     "revision": "c80eb6fa221849c788fc",
