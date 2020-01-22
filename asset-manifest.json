@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mezbaan/static/css/main.602c6c12.chunk.css",
-    "main.js": "/mezbaan/static/js/main.3b00eb65.chunk.js",
-    "main.js.map": "/mezbaan/static/js/main.3b00eb65.chunk.js.map",
+    "main.js": "/mezbaan/static/js/main.43e64e22.chunk.js",
+    "main.js.map": "/mezbaan/static/js/main.43e64e22.chunk.js.map",
     "runtime-main.js": "/mezbaan/static/js/runtime-main.c8deaa77.js",
     "runtime-main.js.map": "/mezbaan/static/js/runtime-main.c8deaa77.js.map",
     "static/css/2.64a99b10.chunk.css": "/mezbaan/static/css/2.64a99b10.chunk.css",
     "static/js/2.96542ea5.chunk.js": "/mezbaan/static/js/2.96542ea5.chunk.js",
     "static/js/2.96542ea5.chunk.js.map": "/mezbaan/static/js/2.96542ea5.chunk.js.map",
     "index.html": "/mezbaan/index.html",
-    "precache-manifest.71173b07a57503060c38f49c66c5e7a5.js": "/mezbaan/precache-manifest.71173b07a57503060c38f49c66c5e7a5.js",
+    "precache-manifest.9c8f3bd06335fb1383f861650200640f.js": "/mezbaan/precache-manifest.9c8f3bd06335fb1383f861650200640f.js",
     "service-worker.js": "/mezbaan/service-worker.js",
     "static/css/2.64a99b10.chunk.css.map": "/mezbaan/static/css/2.64a99b10.chunk.css.map",
     "static/css/main.602c6c12.chunk.css.map": "/mezbaan/static/css/main.602c6c12.chunk.css.map",
@@ -33,6 +33,6 @@
     "static/css/2.64a99b10.chunk.css",
     "static/js/2.96542ea5.chunk.js",
     "static/css/main.602c6c12.chunk.css",
-    "static/js/main.3b00eb65.chunk.js"
+    "static/js/main.43e64e22.chunk.js"
   ]
 }
